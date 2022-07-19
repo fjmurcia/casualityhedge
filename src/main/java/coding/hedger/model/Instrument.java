@@ -6,9 +6,10 @@ public class Instrument {
     private double price;
     private double beta;
 
-    public Instrument(String ticker, int position) {
+
+
+    public Instrument(String ticker) {
         this.ticker = ticker;
-        this.position = position;
     }
 
 
@@ -24,7 +25,7 @@ public class Instrument {
         return position;
     }
 
-    public void setPosition(short position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 
