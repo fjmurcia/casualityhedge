@@ -1,4 +1,4 @@
-package coding.hedger.business;
+package coding.hedger.utils;
 
 import coding.hedger.model.Instrument;
 
@@ -7,12 +7,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 import java.util.Map;
 
 public class MarketUtils {
 
-    public static void fillMktData(Map<String,Instrument> instrumentsMap, InputStream is, HedgerExecutor.MktData type) {
+    public enum MktData {
+        POSITION, PRICE, BETAS
+    }
+
+    public static void fillMktData(Map<String,Instrument> instrumentsMap, InputStream is, MktData type) {
         try (InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(streamReader)) {
             String line;
             reader.readLine();//remove first line / headers
@@ -43,13 +46,4 @@ public class MarketUtils {
         }
     }
 
-
-    public static Instrument getByTicker(List<Instrument> instruments, String ticker) {
-        for (Instrument instrument : instruments) {
-            if (instrument.getTicker().equalsIgnoreCase(ticker)) {
-                return instrument;
-            }
-        }
-        return null;
-    }
 }

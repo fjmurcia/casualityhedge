@@ -45,6 +45,9 @@ public class Instrument {
         this.beta = beta;
     }
 
+
+
+
     @Override
     public String toString() {
         return "Instrument{" +
